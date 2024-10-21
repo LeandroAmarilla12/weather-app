@@ -1,8 +1,8 @@
 class WeatherService {
-  apiKey = '75001152a28d401194d185718242110';
+   apiKey = process.env.REACT_APP_API_KEY?.replace(/['";]+/g, '');
 
+  //apiKey = "75001152a28d401194d185718242110";
   async getWeather(city: string) {
-   console.log(this.apiKey);
     const url = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${city}`;
     const response = await fetch(url);
     if (!response.ok) {
@@ -15,4 +15,4 @@ class WeatherService {
 
 const weatherService = new WeatherService();
 
-export  {weatherService}
+export { weatherService };
